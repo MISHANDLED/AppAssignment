@@ -22,7 +22,8 @@ final class MovieDetailInteractor {
                 "https://i.imgur.com/OB0y6MR.jpg",
                 "https://i.imgur.com/OnwEDW3.jpg"
             ],
-            title: "Mad Max saga: Fury Road",
+            title: "Mad Max saga: Fury Road", 
+            tag: "Blockbuster",
             description: "When the world is taken by darkness, a hero will rise.",
             location: "Cinephile, Bangalore",
             date: today.addingTimeInterval(oneDayInSeconds),

@@ -11,6 +11,7 @@ struct MovieDetailEntity {
     let images: [String]
     
     let title: String
+    let tag: String
     let description: String
     let location: String
     let date: Date

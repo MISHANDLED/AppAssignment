@@ -53,6 +53,7 @@ extension MovieDetailPresenter {
     private func convertToDetailsModel(from data: MovieDetailEntity) -> DetailsView.ViewModel {
         .init(
             title: data.title,
+            tag: data.tag,
             description: data.description,
             location: data.location,
             showtime: data.date.formatted(as: .timeWithDay)
