@@ -34,9 +34,16 @@ extension MovieDetailPresenter: MDInteractorPresenterProtocol {
     func dataFetched(data: MovieDetailEntity) {
         let movieDetails = convertToDetailsModel(from: data)
         let bookingDetails = convertToBookingModel(from: data)
+        let aboutDetails = convertToAboutModel(from: data)
         
         interactor.updateTimer(to: data.bookingCloseDate)
-        view?.dataFetched(images: data.images, details: movieDetails, bookingDetails: bookingDetails)
+        
+        view?.dataFetched(
+            images: data.images,
+            details: movieDetails,
+            bookingDetails: bookingDetails,
+            aboutDetails: aboutDetails
+        )
     }
 }
 
@@ -57,5 +64,15 @@ extension MovieDetailPresenter {
             avatars: data.userAvatars,
             userCount: data.bookingUserCount
         )
+    }
+    
+    private func convertToAboutModel(from data: MovieDetailEntity) -> [AboutView.ViewModel] {
+        data.content.enumerated().map { index, content in
+                .init(
+                    title: content.title,
+                    content: content.content,
+                    isSelected: index == 0
+                )
+        }
     }
 }

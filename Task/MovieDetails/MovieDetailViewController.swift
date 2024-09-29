@@ -12,6 +12,8 @@ final class MovieDetailViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
 
@@ -39,6 +41,12 @@ final class MovieDetailViewController: UIViewController {
 
     private let bookingDetailsView: BookingsView = {
         let view = BookingsView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let aboutDetailsView: AboutView = {
+        let view = AboutView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -89,6 +97,7 @@ final class MovieDetailViewController: UIViewController {
         
         stackView.addArrangedSubview(detailsView)
         stackView.addArrangedSubview(bookingDetailsView)
+        stackView.addArrangedSubview(aboutDetailsView)
     }
     
     override func viewDidLoad() {
@@ -102,13 +111,29 @@ final class MovieDetailViewController: UIViewController {
 
 // MARK: MDPresenterViewProtocol
 extension MovieDetailViewController: MDPresenterViewProtocol {
-    func dataFetched(images: [String], details: DetailsView.ViewModel, bookingDetails: BookingsView.ViewModel) {
+    func dataFetched(
+        images: [String],
+        details: DetailsView.ViewModel,
+        bookingDetails: BookingsView.ViewModel,
+        aboutDetails: [AboutView.ViewModel]
+    ) {
         imageCarousel.configure(with: images)
         detailsView.configure(with: details)
         bookingDetailsView.configure(with: bookingDetails)
+        aboutDetailsView.configure(with: aboutDetails)
     }
     
-    func updateTimer(days: Int, hours: Int, minutes: Int, seconds: Int) {
-        bookingDetailsView.configure(days: days, hours: hours, minutes: minutes, seconds: seconds)
+    func updateTimer(
+        days: Int,
+        hours: Int,
+        minutes: Int,
+        seconds: Int
+    ) {
+        bookingDetailsView.configure(
+            days: days,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds
+        )
     }
 }

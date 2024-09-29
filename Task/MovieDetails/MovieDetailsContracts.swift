@@ -9,7 +9,7 @@ import Foundation
 
 // One way communication from presenter to view
 protocol MDPresenterViewProtocol: AnyObject {
-    func dataFetched(images: [String], details: DetailsView.ViewModel, bookingDetails: BookingsView.ViewModel)
+    func dataFetched(images: [String], details: DetailsView.ViewModel, bookingDetails: BookingsView.ViewModel, aboutDetails: [AboutView.ViewModel])
     func updateTimer(days: Int, hours: Int, minutes: Int, seconds: Int)
 }
 

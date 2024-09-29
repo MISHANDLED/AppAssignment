@@ -19,4 +19,11 @@ struct MovieDetailEntity {
     let bookingUserCount: Int
     
     let userAvatars: [String]
+    
+    let content: [AboutMovieSection]
+}
+
+struct AboutMovieSection {
+    let title: String
+    let content: String
 }
